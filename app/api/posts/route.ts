@@ -7,6 +7,7 @@ export async function POST(request: Request) {
     const post = await prisma.post.create({ data: { title, slug, content } });
     return NextResponse.json(post);
   } catch (error) {
+    console.error('Error creating post:', error); // Usa la variable 'error'
     return NextResponse.json(
       { error: 'Error al crear el post' },
       { status: 500 }
